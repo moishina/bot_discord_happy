@@ -4,6 +4,9 @@ from discord import app_commands
 import random
 import re
 from collections import defaultdict
+from dotenv import load_dotenv
+load_dotenv(override=True)
+import os
 # ( all ) todas as permissoes q o bot precisa guardado na var intents
 
 # intents = discord.Intents.all()
@@ -23,13 +26,13 @@ async def on_ready(): # qnd o bot estiver pronto
     await bot.change_presence(status=discord.Status.online, activity=activity)
     
 # jogando
-# activity = discord.Game(name="Crosscode")  
+# activity = discord.Game(name="nomedojogo")  
 
 # Ouvindo
 # discord.Activity(type=discord.ActivityType.listening, name="música boa")
 
 # Transmitindo (streaming) — aparece roxinho
-# discord.Streaming(name="meu gameplay", url="https://twitch.tv/seulink")
+# discord.Streaming(name="meu gameplay", url="https://twitch.tv/link")
 
 
 #  COMANDO DE HELP ( VER OS COMANDOS DO BOT )
@@ -41,7 +44,7 @@ async def help(ctx):
                        **/server_icon** — mostra o avatar do servidor.
                        **/roll ou .r** — role um dado de qualquer face com, ou sem bônus.
                        **/clear ou .clear** — limpa mensagens do chat (até 100). 
-                       **/jokenpo — jogue pedra, papel e tesoura com alguém!
+                       **/jokenpo** — jogue pedra, papel e tesoura com alguém!
                        **/time** — divide os membros da call em dois times aleatórios.
                        **/shipp** — junta dois usuários e dá uma nota de compatibilidade.
                        **/kiss** — beije um usuário.
@@ -1138,17 +1141,22 @@ async def dance(interaction: discord.Interaction):
 
 #  COMANDO DE LIMPAR O CHAT
 @bot.hybrid_command(name='clear', description='Limpa mensagens do chat (até 100)') #  por ser hibrido funciona como cmd normal e cmd slash ao mesmo tempo
-@app_commands.describe(count='Quantidade de mensagens a deletar (1-100)') #  descricao
+@app_commands.describe(count='Quantidade de mensagens a deletar (2-100)') #  descricao
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, count: int):
-        if count < 1 or count > 100:
-            await ctx.send("⚠️ Você pode limpar apenas entre 1 e 100 mensagens.", delete_after=8)
+        if count < 2 or count > 100:
+            await ctx.response.send_message("⚠️ Você pode limpar apenas entre 2 e 100 mensagens!", delete_after=8)
             return
     
-        await ctx.channel.purge(limit=count + 1)
+        await ctx.defer()
+          
+        await ctx.channel.purge(limit=count+1)
         # await asyncio.sleep(1)
-        await ctx.send(f"{count} mensagens foram deletadas por {ctx.author.mention}", delete_after=8)
-    
+        # await ctx.channel.send(f"{count} mensagens foram deletadas por {ctx.author.mention}!", delete_after=8)
+        await ctx.channel.send(f"{count} mensagens foram deletadas por {ctx.author.mention}!", delete_after=8)
+
+
+
 #  erros
 @clear.error
 async def clear_error(ctx, error):
@@ -1171,6 +1179,6 @@ async def text(interact:discord.Interaction, texto:str):
 
 
 
-
+# ctx = comando hibrido/padrao e interaction = comando slash
 # bot.run precisa estar em ULTIMO para analisar todo o código e poder rodar
-bot.run("MTQwNDU4NjU1NDk2NTM2NDczNg.GN8wTs.Bf8mtfl08TKq_PiVZieZSFU6FA_XmCfpmnKF0w")
+bot.run(os.getenv("DISCORD_TOKEN"))
