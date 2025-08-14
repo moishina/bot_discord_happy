@@ -8,14 +8,14 @@ class HighFive(commands.Cog):
         self.bot = bot
         super().__init__()
         
-    @app_commands.command(name="highfive", description="Faz um toca aqui com alguém (ou com o bot...)")   
+    @app_commands.command(name="highfive", description="Faz um 'bate aqui' com alguém (ou com o bot...)")   
     @app_commands.describe(user="Quem vai receber o highfive")
     async def highfive(self, interaction: discord.Interaction, user: discord.Member):
         user1 = interaction.user
         user2 = user
 
         if user1 == user2:
-            await interaction.response.send_message("❌ Você não pode fazer toca aqui consigo mesmo(a)!...", ephemeral=True)
+            await interaction.response.send_message("‼️ Você não pode fazer 'bate aqui' consigo mesmo(a)...", ephemeral=True)
             return
 
         #  resposta especial se fazer carinho no bot
@@ -60,7 +60,7 @@ class HighFive(commands.Cog):
             @discord.ui.button(label="💞 Retribuir", style=discord.ButtonStyle.secondary)
             async def retribuir(self, interaction: discord.Interaction, button: discord.ui.Button):
                 if interaction.user.id != self.quem_recebeu.id:
-                    await interaction.response.send_message("❌ Só quem recebeu o toca aqui pode retribuir!", ephemeral=True)
+                    await interaction.response.send_message("‼️ Só quem recebeu o toca aqui pode retribuir!", ephemeral=True)
                     return
 
                 novo_combo = self.combo + 1

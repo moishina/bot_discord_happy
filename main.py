@@ -29,18 +29,13 @@ async def on_ready():
     activity = discord.Activity(type=discord.ActivityType.watching, name="Fairy Tail")
     await bot.change_presence(status=discord.Status.online, activity=activity)
     
-# jogando:
-# activity = discord.Game(name="nomedojogo")  
-
-# ouvindo:
-# discord.Activity(type=discord.ActivityType.listening, name="música boa")
-
-# transmitindo (streaming) — aparece roxinho:
-# discord.Streaming(name="meu gameplay", url="https://twitch.tv/link")
+    
+#? jogando: activity = discord.Game(name="nomedojogo")  
+#? ouçando: discord.Activity(type=discord.ActivityType.listening, name="música boa")
+#? streamando: discord.Streaming(name="meu gameplay", url="https://twitch.tv/link")
 
         
-
-
+# TODO: Verificar se todos os comandos estão rodando corretamente antes de serem upados na nuvem.
 
 
 

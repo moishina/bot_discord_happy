@@ -15,7 +15,7 @@ class Bite(commands.Cog):
         user2 = user
 
         if user1 == user2:
-            await interaction.response.send_message("❌ Você não pode morder a si mesmo(a)!...", ephemeral=True)
+            await interaction.response.send_message("‼️ Você não pode morder a si mesmo(a)...", ephemeral=True)
             return
 
         #  resposta especial se morder o bot
@@ -60,7 +60,7 @@ class Bite(commands.Cog):
             @discord.ui.button(label="💞 Retribuir", style=discord.ButtonStyle.secondary)
             async def retribuir(self, interaction: discord.Interaction, button: discord.ui.Button):
                 if interaction.user.id != self.quem_recebeu.id:
-                    await interaction.response.send_message("❌ Só quem recebeu a mordida pode retribuir!", ephemeral=True)
+                    await interaction.response.send_message("‼️ Só quem recebeu a mordida pode retribuir!", ephemeral=True)
                     return
 
                 novo_combo = self.combo + 1

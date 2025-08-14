@@ -16,7 +16,7 @@ class Kiss(commands.Cog):
         user2 = user
 
         if user1 == user2:
-            await interaction.response.send_message("❌ Você não pode se beijar...", ephemeral=True)
+            await interaction.response.send_message("‼️ Você não pode se beijar...", ephemeral=True)
             return
 
     #  resposta especial se beijar o bot
@@ -75,7 +75,7 @@ class Kiss(commands.Cog):
             @discord.ui.button(label="💞 Retribuir", style=discord.ButtonStyle.secondary)
             async def retribuir(self, interaction: discord.Interaction, button: discord.ui.Button):
                 if interaction.user.id != self.quem_recebeu.id:
-                    await interaction.response.send_message("❌ Só quem recebeu o beijo pode retribuir!", ephemeral=True)
+                    await interaction.response.send_message("‼️ Só quem recebeu o beijo pode retribuir!", ephemeral=True)
                     return
 
                 novo_combo = self.combo + 1

@@ -58,7 +58,7 @@ class Shipp(commands.Cog):
     @app_commands.describe(user1="Primeira pessoa", user2="Segunda pessoa")
     async def shipp(self, interaction: discord.Interaction, user1: discord.Member, user2: discord.Member):
         if user1 == user2:
-            await interaction.response.send_message("❌ Você não pode shippar a mesma pessoa com ela mesma!", ephemeral=True)
+            await interaction.response.send_message("‼️ Você não pode shippar a mesma pessoa com ela mesma!", ephemeral=True)
             return
 
     #  resposta especial se alguém shippar o bot
